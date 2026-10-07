@@ -52,6 +52,12 @@ git push -u origin main
 
 ## 发布应用下载包
 
+本仓库提供 `Publish Intel macOS release` 工作流：在 [Actions](https://github.com/hxixih/WordLens/actions) 中选择该工作流，点击 **Run workflow**，使用 `main` 分支，即可在构建、签名检查和 118 项测试通过后发布安装包及 SHA-256 校验文件。版本号读取自 `Info.plist`；已有同名 Release 时直接跳过，不覆盖已发布的文件。
+
+首次上传或更新 `.github/workflows/release.yml` 到 `main` 也会触发发布。普通源码提交仅运行 CI；维护者可手动发布新版本。只有发布工作流具有当前仓库的 `contents: write` 权限，使用 GitHub 自动提供的临时令牌，不需要额外保存个人 Token 或模型 API Key。
+
+如果选择在本地打包并手动上传，请按以下步骤操作。
+
 在项目目录执行：
 
 ```bash
