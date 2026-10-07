@@ -1,0 +1,30 @@
+# Local builds, caches, and downloadable release assets
+/work/
+/dist/
+/build/
+/DerivedData/
+*.app/
+*.zip
+*.dmg
+*.dSYM/
+*.o
+*.pcm
+*.log
+
+# macOS and editor state
+.DS_Store
+._*
+.idea/
+.vscode/
+*.xcuserstate
+xcuserdata/
+
+# Personal credentials and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.mobileprovision
+config.local.*

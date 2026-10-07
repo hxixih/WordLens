@@ -1,0 +1,28 @@
+name: Build and test Intel macOS
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-15-intel
+    timeout-minutes: 15
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Build application
+        run: bash build.sh
+      - name: Run tests
+        run: bash test.sh
+      - name: Verify application bundle
+        run: |
+          codesign --verify --deep --strict --verbose=2 "dist/划词译.app"
+          plutil -lint "dist/划词译.app/Contents/Info.plist"
